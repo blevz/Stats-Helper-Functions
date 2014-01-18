@@ -10,6 +10,7 @@ func Test_Distributions(t *testing.T) {
 	b := makeBinomialDistribution(.5, 8)
 	c := makeUniformDistribution(6)
 	d := makeHyperGeomDistribution(5, 5, 3)
+	e := makePoissonDistribution(.5)
 
 	Convey("Probability should always sum to around 1", t, func() {
 
@@ -17,6 +18,6 @@ func Test_Distributions(t *testing.T) {
 		So(1.0, ShouldAlmostEqual, b.sumProbs())
 		So(1.0, ShouldAlmostEqual, c.sumProbs())
 		So(1.0, ShouldAlmostEqual, d.sumProbs())
-
+		So(1.0, ShouldAlmostEqual, e.sumProbs())
 	})
 }

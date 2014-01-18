@@ -40,3 +40,20 @@ func makeHyperGeomDistribution(n1, n2, nToPick int) (rv randomVarStore) {
 	}
 	return
 }
+
+const (
+	smallEp = .000000001
+)
+
+func makePoissonDistribution(param float64) (rv randomVarStore) {
+	rv.init()
+	for x := 0; ; x++ {
+		numer := math.Pow(param, float64(x)) * math.Pow(math.E, -param)
+		denom := float64(Fact(x))
+		rv.data[space_t(x)] = probability(numer / denom)
+		if rv.data[space_t(x)] < smallEp {
+			break
+		}
+	}
+	return
+}
