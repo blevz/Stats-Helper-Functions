@@ -4,6 +4,14 @@ import (
 	"math"
 )
 
+func makeUniformDistribution(n int) (rv randomVarStore) {
+	rv.init()
+	for x := 0; x < n; x++ {
+		rv.data[space_t(x)] = probability(1.0 / float64(n))
+	}
+	return
+}
+
 func makeBernoulliDistribution(p probability) (rv randomVarStore) {
 	rv.init()
 	rv.data[0] = 1 - p
@@ -26,8 +34,8 @@ func makeBinomialDistribution(p probability, numTrials int) (rv randomVarStore) 
 func makeHyperGeomDistribution(n1, n2, nToPick int) (rv randomVarStore) {
 	rv.init()
 	for x := 0; x <= nToPick; x++ {
-		numer := Choose(n1, x) * Choose(n2, nToPick-x)
-		denom := Choose(n1+n2, nToPick)
+		numer := float64(Choose(n1, x) * Choose(n2, nToPick-x))
+		denom := float64(Choose(n1+n2, nToPick))
 		rv.data[space_t(x)] = probability(numer / denom)
 	}
 	return
