@@ -34,12 +34,16 @@ func (g graph) init() {
 }
 
 func drawRectOnC(c *draw2d.ImageGraphicContext, r image.Rectangle) {
-	c.MoveTo(float64(r.Min.X), float64(r.Min.Y))
-	c.LineTo(float64(r.Min.X), float64(r.Max.Y))
-	c.LineTo(float64(r.Max.X), float64(r.Max.Y))
-	c.LineTo(float64(r.Max.X), float64(r.Min.Y))
-	c.LineTo(float64(r.Min.X), float64(r.Min.Y))
-	c.Stroke()
+	if c != nil {
+		c.MoveTo(float64(r.Min.X), float64(r.Min.Y))
+		c.LineTo(float64(r.Min.X), float64(r.Max.Y))
+		c.LineTo(float64(r.Max.X), float64(r.Max.Y))
+		c.LineTo(float64(r.Max.X), float64(r.Min.Y))
+		c.LineTo(float64(r.Min.X), float64(r.Min.Y))
+		c.Stroke()
+	} else {
+		panic("gotta have context")
+	}
 }
 
 func (g *graph) toImage() (m *image.RGBA) {
