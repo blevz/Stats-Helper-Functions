@@ -10,7 +10,7 @@ func Test_Distributions(t *testing.T) {
 	a := makeBernoulliDistribution(.5)
 	b := makeBernoulliDistribution(.001)
 
-	//For large values of the second value the probability stops summing to 1
+	//For large values of the second value the float64 stops summing to 1
 	c := makeBinomialDistribution(.5, 8)
 	d := makeBinomialDistribution(.1, 10)
 
@@ -24,7 +24,7 @@ func Test_Distributions(t *testing.T) {
 	j := makePoissonDistribution(.5)
 	k := makePoissonDistribution(.1)
 
-	Convey("Probability should always sum to around 1", t, func() {
+	Convey("float64 should always sum to around 1", t, func() {
 
 		So(1.0, ShouldAlmostEqual, a.sumProbs())
 		So(1.0, ShouldAlmostEqual, b.sumProbs())

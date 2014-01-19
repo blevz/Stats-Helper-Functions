@@ -1,8 +1,5 @@
 package main
 
-type probability float64
-type space_t float64
-
 //Verbosity levels
 const (
 	Low_Verbosity           = 0

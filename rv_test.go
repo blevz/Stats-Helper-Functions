@@ -7,7 +7,7 @@ import (
 
 func Test_Rv(t *testing.T) {
 	var a randomVarStore
-	a.data = make(map[space_t]probability)
+	a.data = make(map[float64]float64)
 	a.data[0] = .2
 	a.data[2] = .2
 	a.data[4] = .2
@@ -15,14 +15,14 @@ func Test_Rv(t *testing.T) {
 	a.data[8] = .2
 
 	var b randomVarStore
-	b.data = make(map[space_t]probability)
+	b.data = make(map[float64]float64)
 	b.data[0] = .2
 	b.data[1] = .2
 	b.data[2] = .2
 	b.data[3] = .2
 	b.data[4] = .2
 
-	Convey("the sum of probability should always be near 1", t, func() {
+	Convey("the sum of float64 should always be near 1", t, func() {
 		So(1.0, ShouldAlmostEqual, a.sumProbs())
 		So(1.0, ShouldAlmostEqual, b.sumProbs())
 

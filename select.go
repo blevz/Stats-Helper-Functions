@@ -32,8 +32,8 @@ func selectNFromR(n, r, typeOfSelect int) int {
 	return 5
 }
 
-func selectFromTwoPop(v1, v2, n, x int) probability {
+func selectFromTwoPop(v1, v2, n, x int) float64 {
 	num := Choose(v1, x) * Choose(v2, n-x)
-	var toReturn probability = probability(num) / probability(Choose(v1+v2, n))
+	var toReturn float64 = float64(num) / float64(Choose(v1+v2, n))
 	return toReturn
 }
